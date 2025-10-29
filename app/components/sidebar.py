@@ -7,9 +7,11 @@ NAV_ITEMS = [
     {"label": "My Wallet", "icon": "wallet", "href": "/wallet"},
     {"label": "Health Coverage", "icon": "shield-check", "href": "/coverage"},
     {"label": "Claims", "icon": "file-text", "href": "/claims"},
-    {"label": "Learning Hub", "icon": "book-open", "href": "#"},
-    {"label": "Community Chat", "icon": "message-circle", "href": "#"},
+    {"label": "Learning Hub", "icon": "book-open", "href": "/learning-hub"},
+    {"label": "Mutual Engine", "icon": "coins", "href": "/mutual-engine"},
+    {"label": "Community Chat", "icon": "message-circle", "href": "/community-chat"},
 ]
+ADMIN_NAV_ITEMS = [{"label": "Admin Panel", "icon": "shield", "href": "/admin-panel"}]
 
 
 def nav_item(item: dict) -> rx.Component:
@@ -49,6 +51,7 @@ def sidebar() -> rx.Component:
             ),
             rx.el.nav(
                 rx.foreach(NAV_ITEMS, nav_item),
+                rx.foreach(ADMIN_NAV_ITEMS, nav_item),
                 class_name="flex-1 overflow-auto p-4 grid items-start gap-1",
             ),
             rx.el.div(

@@ -150,6 +150,11 @@ from app.pages.wallet import wallet
 from app.pages.coverage import coverage
 from app.pages.claims import claims
 from app.pages.profile import profile
+from app.pages.learning_hub import learning_hub
+from app.pages.course_detail import course_detail
+from app.pages.community_chat import community_chat
+from app.pages.mutual_engine import mutual_engine
+from app.pages.admin_panel import admin_panel
 
 clerk.wrap_app(
     app,
@@ -163,5 +168,10 @@ app.add_page(wallet)
 app.add_page(coverage)
 app.add_page(claims)
 app.add_page(profile)
+app.add_page(learning_hub)
+app.add_page(course_detail, route="/learning-hub/[course_id]")
+app.add_page(community_chat)
+app.add_page(mutual_engine)
+app.add_page(admin_panel)
 clerk.add_sign_in_page(app)
 clerk.add_sign_up_page(app)
