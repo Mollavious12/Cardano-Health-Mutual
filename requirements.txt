@@ -1,0 +1,7 @@
+
+reflex==0.8.17
+pymongo
+supabase
+stripe
+together
+reflex-clerk-api @ git+https://github.com/reflex-dev/reflex-clerk-api.git
