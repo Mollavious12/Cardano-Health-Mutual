@@ -155,6 +155,7 @@ from app.pages.course_detail import course_detail
 from app.pages.community_chat import community_chat
 from app.pages.mutual_engine import mutual_engine
 from app.pages.admin_panel import admin_panel
+from app.pages.certificate import certificate
 
 clerk.wrap_app(
     app,
@@ -170,6 +171,7 @@ app.add_page(claims)
 app.add_page(profile)
 app.add_page(learning_hub)
 app.add_page(course_detail, route="/learning-hub/[course_id]")
+app.add_page(certificate, route="/learning-hub/[course_id]/certificate")
 app.add_page(community_chat)
 app.add_page(mutual_engine)
 app.add_page(admin_panel)

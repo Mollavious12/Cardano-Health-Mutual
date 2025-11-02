@@ -17,8 +17,8 @@ def message_bubble(message: Message) -> rx.Component:
                 rx.el.p(message["text"], class_name="text-sm"),
                 class_name=rx.cond(
                     is_self,
-                    "bg-violet-500 text-white p-3 rounded-lg max-w-xs",
-                    "bg-gray-200 text-gray-900 p-3 rounded-lg max-w-xs",
+                    "bg-violet-500 text-white p-3 rounded-lg max-w-xs shadow-sm",
+                    "bg-gray-100 text-gray-900 p-3 rounded-lg max-w-xs shadow-sm",
                 ),
             ),
             class_name=rx.cond(
@@ -39,7 +39,14 @@ def community_chat() -> rx.Component:
             ),
             rx.el.div(
                 rx.el.div(
-                    rx.foreach(ChatState.messages, message_bubble),
+                    rx.cond(
+                        ChatState.is_loading,
+                        rx.el.div(
+                            rx.spinner(size="3"),
+                            class_name="w-full flex justify-center p-8",
+                        ),
+                        rx.foreach(ChatState.messages, message_bubble),
+                    ),
                     class_name="flex-1 overflow-y-auto p-6 space-y-4",
                 ),
                 rx.el.div(
@@ -62,6 +69,7 @@ def community_chat() -> rx.Component:
                 ),
                 class_name="flex flex-col h-[70vh] bg-white border rounded-lg shadow-sm",
             ),
+            on_mount=ChatState.get_messages,
             class_name="h-full flex flex-col",
         )
     )

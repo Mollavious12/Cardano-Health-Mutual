@@ -5,3 +5,6 @@ supabase
 stripe
 together
 reflex-clerk-api @ git+https://github.com/reflex-dev/reflex-clerk-api.git
+bson
+pycardano
+blockfrost-python

@@ -1,6 +1,7 @@
 import reflex as rx
 from app.components.dashboard_layout import dashboard_layout
 from app.states.learning_hub_state import LearningHubState, Course
+from app.states.course_state import CourseState
 
 
 def course_content_placeholder() -> rx.Component:
@@ -30,12 +31,13 @@ def course_detail() -> rx.Component:
     return dashboard_layout(
         rx.el.div(
             rx.el.h1(
-                f"Course: {LearningHubState.router.page.params.get('course_id', 'Not Found')}",
+                f"Course: {CourseState.course['title']}",
                 class_name="text-3xl font-bold mb-2",
             ),
             rx.el.p(
                 "Dive deep into the course material.", class_name="text-gray-500 mb-8"
             ),
             course_content_placeholder(),
+            on_mount=CourseState.get_course_details,
         )
     )
